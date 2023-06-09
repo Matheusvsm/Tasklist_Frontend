@@ -38,9 +38,10 @@ function App() {
     );
   };
 
-  async function handleWithNewButton() {
+  function handleWithNewButton() {
     setInputVisibility(!inputVisibility);
   }
+  
 
   async function handleWithEditButtonClick(todo) {
     setSelectedTodo(todo);
@@ -75,11 +76,10 @@ function App() {
   }
 
   async function deleteTodo(todo) {
-    const response = await axios.delete(
-      `https://tasklist-api-hue5.onrender.com/init/${todo.id}`
-    );
-    getTodos();
+    await axios.delete(`https://tasklist-api-hue5.onrender.com/init/${todo.id}`);
+    setTodos(todos.filter((item) => item.id !== todo.id));
   }
+  
 
   async function modifyStatusTodo(todo) {
     const updatedTodo = {
