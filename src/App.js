@@ -52,7 +52,7 @@ function App() {
   }
 
   async function getTodos() {
-    const response = await axios.get(`${apiUrl}/init`);
+    const response = await axios.get(`https://tasklist-api-hue5.onrender.com/init`);
     setTodos(response.data);
     console.log(response.data);
   }
@@ -60,7 +60,7 @@ function App() {
   async function editTodo() {
     const { id } = selectedTodo;
 
-    const response = await axios.put(`${apiUrl}/init/${id}`, {
+    const response = await axios.put(`https://tasklist-api-hue5.onrender.com/init/${id}`, {
       name: inputValue,
       description: inputDescription,
       date: inputDate,
@@ -76,7 +76,7 @@ function App() {
 
   async function deleteTodo(todo) {
     const response = await axios.delete(
-      `${apiUrl}/init/${todo.id}`
+      `https://tasklist-api-hue5.onrender.com/init/${todo.id}`
     );
     getTodos();
   }
@@ -87,12 +87,12 @@ function App() {
       status: !todo.status,
     };
 
-    const response = await axios.put(`${apiUrl}/init/${todo.id}`, updatedTodo);
+    const response = await axios.put(`https://tasklist-api-hue5.onrender.com/init/${todo.id}`, updatedTodo);
     getTodos();
   }
 
   async function createTodo() {
-    const response = await axios.post(`${apiUrl}/init`, {
+    const response = await axios.post(`https://tasklist-api-hue5.onrender.com/init`, {
       name: inputValue,
       description: inputDescription,
       date: inputDate,
